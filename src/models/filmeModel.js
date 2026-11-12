@@ -24,4 +24,10 @@ function listarFilmes() {
   return filmes;
 }
 
-module.exports = { listarFilmes };
+
+function buscarFilmePorId(id) {
+  return filmes.find((filme) => filme.id === id);
+}
+
+
+module.exports = { listarFilmes, buscarFilmePorId };
