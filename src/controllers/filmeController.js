@@ -29,4 +29,23 @@ function buscarFilmePorId(req, res) {
 }
 
 
-module.exports = { listarFilmes, buscarFilmePorId };
+function filtrarFilmes(req, res) {
+  const { nome } = req.query;
+
+  if (typeof nome !== "string" || !nome.trim()) {
+    return res.status(400).json({
+      mensagem: "Informe um nome válido para pesquisar."
+    });
+  }
+
+  const filmes = filmeModel.filtrarFilmes(nome.trim());
+
+  return res.status(200).json(filmes);
+}
+
+
+module.exports = {
+  listarFilmes,
+  buscarFilmePorId,
+  filtrarFilmes
+};

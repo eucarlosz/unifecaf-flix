@@ -6,6 +6,8 @@ const filmeController = require("../controllers/filmeController");
 
 router.get("/filme", filmeController.listarFilmes);
 
+router.get("/filtro/filme", filmeController.filtrarFilmes);
+
 module.exports = router;
 
 router.get("/filme/:id", filmeController.buscarFilmePorId);

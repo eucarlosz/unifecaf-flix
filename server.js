@@ -1,4 +1,3 @@
-
 const express = require("express");
 const filmeRoutes = require("./src/routes/filmeRoutes");
 
@@ -17,6 +16,14 @@ app.get("/", (req, res) => {
 
 app.use("/v1/controle-filmes", filmeRoutes);
 
-app.listen(PORT, () => {
+const servidor = app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
+});
+
+servidor.on("close", () => {
+  console.log("ATENÇÃO: O servidor foi encerrado!");
+});
+
+servidor.on("error", (erro) => {
+  console.error("Erro no servidor:", erro);
 });

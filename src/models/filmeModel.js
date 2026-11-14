@@ -30,4 +30,21 @@ function buscarFilmePorId(id) {
 }
 
 
-module.exports = { listarFilmes, buscarFilmePorId };
+function filtrarFilmes(termo) {
+  const pesquisa = termo.toLocaleLowerCase("pt-BR");
+
+  return filmes.filter((filme) => {
+    const nome = filme.nome.toLocaleLowerCase("pt-BR");
+    const sinopse = (filme.sinopse || "").toLocaleLowerCase("pt-BR");
+
+    return nome.includes(pesquisa) || sinopse.includes(pesquisa);
+  });
+}
+
+
+
+module.exports = {
+  listarFilmes,
+  buscarFilmePorId,
+  filtrarFilmes
+};
