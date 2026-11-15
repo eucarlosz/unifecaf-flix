@@ -1,47 +1,30 @@
 
-const filmes = [
-  {
-    id: 1,
-    nome: "Interestelar",
-    genero: "Ficção científica",
-    ano: 2014
-  },
-  {
-    id: 2,
-    nome: "Batman: O Cavaleiro das Trevas",
-    genero: "Ação",
-    ano: 2008
-  },
-  {
-    id: 3,
-    nome: "Vingadores: Ultimato",
-    genero: "Ação",
-    ano: 2019
-  }
-];
+const db = require("../config/database");
 
-function listarFilmes() {
+async function listarFilmes() {
+  const [filmes] = await db.query("SELECT * FROM filmes ORDER BY id");
   return filmes;
 }
 
+async function buscarFilmePorId(id) {
+  const [filmes] = await db.query(
+    "SELECT * FROM filmes WHERE id = ?",
+    [id]
+  );
 
-function buscarFilmePorId(id) {
-  return filmes.find((filme) => filme.id === id);
+  return filmes[0];
 }
 
+async function filtrarFilmes(termo) {
+  const pesquisa = `%${termo}%`;
 
-function filtrarFilmes(termo) {
-  const pesquisa = termo.toLocaleLowerCase("pt-BR");
+  const [filmes] = await db.query(
+    "SELECT * FROM filmes WHERE nome LIKE ? OR sinopse LIKE ?",
+    [pesquisa, pesquisa]
+  );
 
-  return filmes.filter((filme) => {
-    const nome = filme.nome.toLocaleLowerCase("pt-BR");
-    const sinopse = (filme.sinopse || "").toLocaleLowerCase("pt-BR");
-
-    return nome.includes(pesquisa) || sinopse.includes(pesquisa);
-  });
+  return filmes;
 }
-
-
 
 module.exports = {
   listarFilmes,
