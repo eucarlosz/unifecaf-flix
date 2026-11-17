@@ -165,7 +165,7 @@ node server.js
 Com o servidor iniciado, a interface e a API podem ser acessadas pelo navegador em:
 
 ```text
-http://localhost:3000
+aplicação em execução no navegador
 ```
 
 Esse endereço é local. A aplicação ainda não possui uma versão pública hospedada.
