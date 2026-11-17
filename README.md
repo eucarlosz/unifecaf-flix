@@ -1,11 +1,10 @@
-
 <div align="center">
 
 # 🎬 UNIFECAF FLIX
 
-### 🚀 REST API • NODE.JS • EXPRESS • MYSQL
+### 🚀 REST API • NODE.JS • EXPRESS • MYSQL • THREE.JS
 
-**Uma API cinematográfica construída com tecnologia Backend.**
+**Um catálogo cinematográfico full stack: API REST, banco MySQL e interface web com planeta 3D interativo.**
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:080B18,50:164D9A,100:00BFFF&height=180&section=header&text=UNIFECAF%20FLIX&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Movie%20Catalog%20REST%20API&descAlignY=60" width="100%" alt="Banner UniFECAF Flix"/>
 
@@ -27,7 +26,9 @@
 
 ## 🌌 Sobre o projeto
 
-O **UniFECAF Flix** é uma API REST desenvolvida para consultar um catálogo de filmes armazenado em um banco de dados MySQL.
+O **UniFECAF Flix** é uma aplicação full stack para consultar um catálogo de filmes armazenado em um banco de dados MySQL.
+
+O back-end é uma API REST em Node.js e Express. O front-end, em HTML, CSS e JavaScript puro, consome essa API e exibe os filmes em uma interface escura e cinematográfica, com um planeta 3D interativo feito em Three.js.
 
 O projeto utiliza **Node.js**, **Express** e arquitetura **MVC**, com foco em organização, boas práticas de desenvolvimento Backend e integração com bancos de dados relacionais.
 
@@ -42,6 +43,9 @@ Desenvolvido como projeto acadêmico do curso de **Análise e Desenvolvimento de
 - 🛡️ Validação de parâmetros.
 - ⚡ Tratamento de erros HTTP.
 - 🧩 Organização em arquitetura MVC.
+- 🪐 Planeta 3D interativo (Three.js): gira sozinho e pode ser arrastado com o mouse, com inércia.
+- 🎬 Cards com pôster, animações suaves e janela de detalhes acessível (teclado e tecla Esc).
+- 📱 Interface responsiva, com suporte a `prefers-reduced-motion`.
 
 ---
 
@@ -102,6 +106,8 @@ A arquitetura MVC separa as responsabilidades:
 | 🐬 MySQL 8 | Banco de dados relacional |
 | 🔗 MySQL2 | Comunicação entre Node.js e MySQL |
 | 🔐 Dotenv | Configuração de variáveis de ambiente |
+| 🌐 HTML, CSS e JavaScript | Interface web (sem frameworks) |
+| 🪐 Three.js | Planeta 3D interativo |
 | 🌿 Git | Controle de versões |
 | 🐙 GitHub | Hospedagem do código-fonte |
 
@@ -117,6 +123,13 @@ unifecaf-flix/
 ├── 📂 database/
 │   └── database.sql
 │
+├── 📂 public/
+│   ├── 📂 images/
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   └── planet.js
+│
 ├── 📂 src/
 │   ├── 📂 config/
 │   │   └── database.js
@@ -131,6 +144,7 @@ unifecaf-flix/
 │       └── filmeRoutes.js
 │
 ├── .env
+├── .env.example
 ├── .gitignore
 ├── package.json
 └── server.js
@@ -164,7 +178,8 @@ GET /v1/controle-filmes/filme/1
   "nome": "Interestelar",
   "genero": "Ficção científica",
   "ano": 2014,
-  "sinopse": "Uma equipe viaja pelo espaço em busca de um novo lar para a humanidade."
+  "sinopse": "Uma equipe viaja pelo espaço em busca de um novo lar para a humanidade.",
+  "poster_url": "/images/interestelar.webp"
 }
 ```
 
@@ -214,7 +229,7 @@ database/database.sql
 
 ### 4. Configurar as variáveis de ambiente
 
-Crie um arquivo `.env` na raiz do projeto:
+Copie o arquivo `.env.example` para `.env` e preencha com os dados do seu MySQL:
 
 ```env
 DB_HOST=localhost
@@ -229,10 +244,10 @@ DB_NAME=unifecaf_flix
 ### 5. Iniciar o servidor
 
 ```bash
-node server.js
+npm start
 ```
 
-A API ficará disponível em:
+O site e a API ficarão disponíveis em:
 
 **http://localhost:3000**
 
@@ -276,8 +291,9 @@ Foram realizados testes manuais utilizando `curl` para validar o funcionamento d
 - [x] Validação e tratamento de erros.
 - [x] Script SQL de configuração.
 - [ ] Testes automatizados.
-- [ ] Interface web moderna e responsiva.
-- [ ] Ampliação do catálogo.
+- [x] Interface web moderna e responsiva.
+- [x] Planeta 3D interativo com Three.js.
+- [x] Ampliação do catálogo (8 filmes).
 - [ ] Documentação final e apresentação.
 
 ---

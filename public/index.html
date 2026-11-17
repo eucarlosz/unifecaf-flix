@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore filmes, descubra histórias e encontre seu próximo favorito no UniFECAF Flix.">
+  <meta name="theme-color" content="#070a10">
+
+  <title>UniFECAF Flix | Descubra grandes histórias</title>
+
+  <!--
+    As animações de entrada só escondem o conteúdo quando o JavaScript está ativo.
+    Se o script.js não carregar em 2,5 s, tudo aparece normalmente.
+  -->
+  <script>
+    document.documentElement.classList.add("js");
+    setTimeout(function () {
+      if (!window.flixPronto) document.documentElement.classList.remove("js");
+    }, 2500);
+  </script>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#catalogo">Pular para o catálogo</a>
+
+  <!-- CABEÇALHO -->
+  <header class="header" id="header">
+    <a href="#inicio" class="logo" aria-label="UniFECAF Flix - Início">
+      UniFECAF<span>Flix.</span>
+    </a>
+
+    <nav class="navigation" aria-label="Navegação principal">
+      <a href="#inicio">Início</a>
+      <a href="#catalogo">Filmes</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO PRINCIPAL -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <span class="hero-tag reveal" style="--delay: 0ms">
+          Uma nova forma de explorar o cinema
+        </span>
+
+        <h1 id="hero-title" class="reveal" style="--delay: 100ms">
+          Grandes histórias.
+          <span>Novas descobertas.</span>
+        </h1>
+
+        <p class="reveal" style="--delay: 200ms">
+          Viaje por universos, descubra filmes inesquecíveis
+          e encontre sua próxima história favorita em um só lugar.
+        </p>
+
+        <a href="#catalogo" class="primary-button reveal" style="--delay: 300ms">
+          Explorar filmes
+          <span class="primary-button__icon" aria-hidden="true">↓</span>
+        </a>
+      </div>
+
+      <!-- PLANETA 3D (criado pelo planet.js) -->
+      <div class="hero-decoration reveal reveal--scale" style="--delay: 150ms">
+        <div id="planet-container" class="planet-container"></div>
+        <p class="planet-hint" aria-hidden="true">Arraste para girar</p>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="catalog-section" id="catalogo" aria-labelledby="catalog-title">
+      <div class="section-heading reveal">
+        <div class="section-heading-content">
+          <span class="section-label">Nosso catálogo</span>
+          <h2 id="catalog-title">Histórias que merecem ser vistas.</h2>
+          <p>Explore nossa seleção de filmes e encontre o que assistir.</p>
+        </div>
+
+        <!-- PESQUISA -->
+        <div class="search-container">
+          <label class="sr-only" for="searchInput">Pesquisar filmes</label>
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+            <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input
+            type="search"
+            id="searchInput"
+            name="pesquisa"
+            placeholder="Buscar por nome ou sinopse..."
+            autocomplete="off"
+          >
+        </div>
+      </div>
+
+      <!-- STATUS DA API -->
+      <p id="statusMessage" class="status-message" role="status" aria-live="polite">
+        Carregando filmes...
+      </p>
+
+      <!-- CARDS GERADOS PELO JAVASCRIPT -->
+      <div id="movieGrid" class="movie-grid" aria-label="Lista de filmes"></div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <p>© 2026 UniFECAF Flix. Projeto acadêmico de desenvolvimento web.</p>
+    <p>Feito para quem gosta de boas histórias.</p>
+  </footer>
+
+  <!-- JANELA DE DETALHES (o <dialog> nativo já cuida do foco e da tecla Esc) -->
+  <dialog class="movie-modal" id="movieModal" aria-labelledby="modalTitle">
+    <div class="movie-modal__panel">
+      <button class="movie-modal__close" type="button" id="modalClose" aria-label="Fechar detalhes">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="movie-modal__poster" id="modalPoster"></div>
+      <div class="movie-modal__body">
+        <p class="movie-modal__meta" id="modalMeta"></p>
+        <h2 class="movie-modal__title" id="modalTitle"></h2>
+        <p class="movie-modal__synopsis" id="modalSynopsis"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- CATÁLOGO, ANIMAÇÕES E API -->
+  <script src="./script.js" defer></script>
+
+  <!-- PLANETA 3D (o Three.js é importado dentro do próprio planet.js) -->
+  <script type="module" src="./planet.js"></script>
+</body>
+</html>
