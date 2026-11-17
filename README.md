@@ -1,235 +1,150 @@
+
 <div align="center">
 
-# 🎬 UNIFECAF FLIX
+# 🎬 UniFECAF Flix
 
-### 🚀 REST API • NODE.JS • EXPRESS • MYSQL • THREE.JS
+### Uma experiência cinematográfica desenvolvida para a web
 
-**Um catálogo cinematográfico full stack: API REST, banco MySQL e interface web com planeta 3D interativo.**
+**Node.js · Express · MySQL · JavaScript · Three.js**
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:080B18,50:164D9A,100:00BFFF&height=180&section=header&text=UNIFECAF%20FLIX&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Movie%20Catalog%20REST%20API&descAlignY=60" width="100%" alt="Banner UniFECAF Flix"/>
-
-![Node.js](https://img.shields.io/badge/Node.js-111827?style=for-the-badge&logo=nodedotjs&logoColor=5FAF50)
-![Express](https://img.shields.io/badge/Express-111827?style=for-the-badge&logo=express&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-111827?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
-![MySQL](https://img.shields.io/badge/MySQL-111827?style=for-the-badge&logo=mysql&logoColor=00BFFF)
-
-<br>
-
-![API](https://img.shields.io/badge/API-REST-0088FF?style=flat-square)
-![Architecture](https://img.shields.io/badge/Architecture-MVC-5865F2?style=flat-square)
-![Endpoints](https://img.shields.io/badge/Endpoints-3-00A86B?style=flat-square)
-![Tests](https://img.shields.io/badge/Manual_Tests-6_Passed-00A86B?style=flat-square)
+[![Node.js](https://img.shields.io/badge/Node.js-111827?style=for-the-badge&logo=nodedotjs&logoColor=5FA04E)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-111827?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![MySQL](https://img.shields.io/badge/MySQL-111827?style=for-the-badge&logo=mysql&logoColor=4479A1)](https://www.mysql.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-111827?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+[![Three.js](https://img.shields.io/badge/Three.js-111827?style=for-the-badge&logo=threedotjs&logoColor=white)](https://threejs.org/)
 
 </div>
 
 ---
 
-## 🌌 Sobre o projeto
+## Sobre o projeto
 
-O **UniFECAF Flix** é uma aplicação full stack para consultar um catálogo de filmes armazenado em um banco de dados MySQL.
+O **UniFECAF Flix** nasceu como um projeto acadêmico para desenvolver uma API REST de catálogo de filmes.
 
-O back-end é uma API REST em Node.js e Express. O front-end, em HTML, CSS e JavaScript puro, consome essa API e exibe os filmes em uma interface escura e cinematográfica, com um planeta 3D interativo feito em Three.js.
+Durante o desenvolvimento, decidi ir além da proposta inicial e construir uma interface própria, inspirada na experiência das plataformas de streaming.
 
-O projeto utiliza **Node.js**, **Express** e arquitetura **MVC**, com foco em organização, boas práticas de desenvolvimento Backend e integração com bancos de dados relacionais.
+O resultado é uma aplicação que combina backend em Node.js, persistência de dados com MySQL e um frontend com animações, efeitos de profundidade e elementos tridimensionais.
 
-Desenvolvido como projeto acadêmico do curso de **Análise e Desenvolvimento de Sistemas — UniFECAF**.
+## Experiência visual
 
-### ✨ Funcionalidades
+A interface utiliza uma identidade cinematográfica com tons escuros, iluminação azul e transições suaves.
 
-- 🎞️ Listagem de filmes cadastrados.
-- 🔎 Pesquisa de filmes por nome ou sinopse.
-- 🎯 Consulta individual por ID.
-- 🗄️ Integração com MySQL.
-- 🛡️ Validação de parâmetros.
-- ⚡ Tratamento de erros HTTP.
-- 🧩 Organização em arquitetura MVC.
-- 🪐 Planeta 3D interativo (Three.js): gira sozinho e pode ser arrastado com o mouse, com inércia.
-- 🎬 Cards com pôster, animações suaves e janela de detalhes acessível (teclado e tecla Esc).
-- 📱 Interface responsiva, com suporte a `prefers-reduced-motion`.
+O catálogo apresenta oito filmes, com pôsteres otimizados em WebP e interações que tornam a navegação mais dinâmica.
 
----
+### Recursos da interface
 
-## 📊 Visão geral
+- Cards de filmes com efeitos 3D
+- Animações e transições suaves
+- Planeta tridimensional desenvolvido com Three.js
+- Efeitos de aproximação e profundidade
+- Pesquisa de filmes
+- Janela interativa com detalhes dos títulos
+- Layout responsivo
+- Dados integrados à API REST
 
-<div align="center">
+## Tecnologias utilizadas
 
-| 🎬 Endpoints | 🧩 Arquitetura | 🧪 Testes manuais |
-|:---:|:---:|:---:|
-| **03** | **MVC** | **06 aprovados** |
-| Rotas principais | Código organizado | Cenários verificados |
+| Camada | Tecnologias |
+|---|---|
+| Frontend | HTML5, CSS3, JavaScript |
+| Experiência 3D | Three.js |
+| Backend | Node.js, Express |
+| Banco de dados | MySQL |
+| Integração | mysql2 |
+| Versionamento | Git e GitHub |
 
-</div>
+## Arquitetura
 
----
-
-## 🏗️ Arquitetura do sistema
+A aplicação foi organizada para separar a interface, as rotas da API e o acesso ao banco de dados.
 
 ```mermaid
 flowchart TD
-    A["🌐 Cliente / HTTP"] --> B["🚀 Express Server"]
-    B --> C["🛣️ Routes"]
-    C --> D["⚙️ Controllers"]
-    D --> E["🧩 Models"]
-    E --> F[("🗄️ MySQL Database")]
-    F --> E
-    E --> D
-    D --> B
+    A["Interface Web"] --> B["API REST"]
+    B --> C["Express / Node.js"]
+    C --> D["MySQL"]
+    D --> C
+    C --> B
     B --> A
-
-    style A fill:#14213d,color:#fff,stroke:#38bdf8
-    style B fill:#164e63,color:#fff,stroke:#38bdf8
-    style C fill:#1e3a8a,color:#fff,stroke:#60a5fa
-    style D fill:#1e40af,color:#fff,stroke:#60a5fa
-    style E fill:#1d4ed8,color:#fff,stroke:#93c5fd
-    style F fill:#0f766e,color:#fff,stroke:#5eead4
 ```
 
-A arquitetura MVC separa as responsabilidades:
+O frontend solicita os dados à API, que consulta o banco MySQL e devolve as informações em JSON.
 
-**Model:** realiza consultas SQL e acessa os dados.
+Essa separação facilita a manutenção do projeto e permite evoluir a interface sem concentrar toda a lógica em um único arquivo.
 
-**Controller:** processa as requisições e define as respostas HTTP.
-
-**Routes:** organiza os endpoints disponíveis.
-
----
-
-## 🛠️ Tecnologias utilizadas
-
-<div align="center">
-
-| Tecnologia | Utilização |
-|:---|:---|
-| 🟢 Node.js | Ambiente de execução JavaScript |
-| ⚡ Express.js | Framework para criação da API |
-| 🟨 JavaScript | Linguagem de programação |
-| 🐬 MySQL 8 | Banco de dados relacional |
-| 🔗 MySQL2 | Comunicação entre Node.js e MySQL |
-| 🔐 Dotenv | Configuração de variáveis de ambiente |
-| 🌐 HTML, CSS e JavaScript | Interface web (sem frameworks) |
-| 🪐 Three.js | Planeta 3D interativo |
-| 🌿 Git | Controle de versões |
-| 🐙 GitHub | Hospedagem do código-fonte |
-
-</div>
-
----
-
-## 📁 Estrutura do projeto
+## Estrutura do projeto
 
 ```text
 unifecaf-flix/
 │
-├── 📂 database/
+├── database/
 │   └── database.sql
 │
-├── 📂 public/
-│   ├── 📂 images/
+├── public/
+│   ├── images/
+│   │   ├── a-origem.webp
+│   │   ├── aranhaverso.webp
+│   │   ├── avengers.webp
+│   │   ├── batman.webp
+│   │   ├── cidade-de-deus.webp
+│   │   ├── coringa.webp
+│   │   ├── interestelar.webp
+│   │   └── parasita.webp
+│   │
 │   ├── index.html
 │   ├── style.css
 │   ├── script.js
 │   └── planet.js
 │
-├── 📂 src/
-│   ├── 📂 config/
+├── src/
+│   ├── config/
 │   │   └── database.js
-│   │
-│   ├── 📂 controllers/
-│   │   └── filmeController.js
-│   │
-│   ├── 📂 models/
-│   │   └── filmeModel.js
-│   │
-│   └── 📂 routes/
+│   └── routes/
 │       └── filmeRoutes.js
 │
-├── .env
 ├── .env.example
-├── .gitignore
 ├── package.json
-└── server.js
+├── server.js
+└── README.md
 ```
 
-> O arquivo `.env` contém configurações locais e não deve ser publicado no GitHub.
+## API REST
 
----
+A API permite consultar os filmes cadastrados no banco de dados.
 
-## 🌐 Endpoints da API
+| Método | Endpoint | Função |
+|---|---|---|
+| GET | `/v1/controle-filmes/filme` | Listar filmes |
+| GET | `/v1/controle-filmes/filme/:id` | Buscar filme por ID |
+| GET | `/v1/controle-filmes/filtro/filme` | Filtrar filmes |
 
-### 🎞️ 01 — Listar todos os filmes
+As respostas utilizam o formato JSON.
 
-```http
-GET /v1/controle-filmes/filme
-```
+## Como executar
 
-Retorna os filmes cadastrados no banco de dados.
+Para executar o projeto localmente, é necessário ter Node.js e MySQL instalados.
 
-### 🎯 02 — Buscar filme pelo ID
-
-```http
-GET /v1/controle-filmes/filme/1
-```
-
-**Exemplo de resposta:**
-
-```json
-{
-  "id": 1,
-  "nome": "Interestelar",
-  "genero": "Ficção científica",
-  "ano": 2014,
-  "sinopse": "Uma equipe viaja pelo espaço em busca de um novo lar para a humanidade.",
-  "poster_url": "/images/interestelar.webp"
-}
-```
-
-### 🔎 03 — Pesquisar filmes
-
-```http
-GET /v1/controle-filmes/filtro/filme?nome=batman
-```
-
-Permite pesquisar filmes pelo nome ou pela sinopse.
-
----
-
-## 🚦 Respostas HTTP
-
-| Código | Status | Descrição |
-|:---:|:---|:---|
-| 🟢 200 | OK | Requisição realizada com sucesso |
-| 🟡 400 | Bad Request | Parâmetro inválido |
-| 🟠 404 | Not Found | Filme não encontrado |
-| 🔴 500 | Internal Server Error | Falha interna no servidor |
-
----
-
-## 🚀 Como executar o projeto
-
-### 1. Clonar o repositório
+### Clonar o repositório
 
 ```bash
 git clone https://github.com/eucarlosz/unifecaf-flix.git
 cd unifecaf-flix
 ```
 
-### 2. Instalar as dependências
+### Instalar as dependências
 
 ```bash
 npm install
 ```
 
-### 3. Configurar o MySQL
+### Configurar o MySQL
 
-Com o MySQL instalado e em execução, importe o arquivo:
+Execute o script disponível em:
 
 ```text
 database/database.sql
 ```
 
-### 4. Configurar as variáveis de ambiente
-
-Copie o arquivo `.env.example` para `.env` e preencha com os dados do seu MySQL:
+Crie um arquivo `.env` na raiz do projeto com as configurações do seu ambiente:
 
 ```env
 DB_HOST=localhost
@@ -239,85 +154,61 @@ DB_PASSWORD=sua_senha
 DB_NAME=unifecaf_flix
 ```
 
-> Substitua `sua_senha` pela senha local do MySQL. Nunca publique esse arquivo.
+O `.env.example` serve como referência para essa configuração. As credenciais utilizadas no computador não são incluídas no repositório.
 
-### 5. Iniciar o servidor
+### Iniciar a aplicação
 
 ```bash
-npm start
+node server.js
 ```
 
-O site e a API ficarão disponíveis em:
+Com o servidor iniciado, a interface e a API podem ser acessadas pelo navegador em:
 
-**http://localhost:3000**
+```text
+http://localhost:3000
+```
 
----
+Esse endereço é local. A aplicação ainda não possui uma versão pública hospedada.
 
-## 🧪 Testes realizados
+## Evolução do projeto
 
-Foram realizados testes manuais utilizando `curl` para validar o funcionamento da API.
+O desenvolvimento foi realizado em etapas, começando pela estrutura da API e avançando até a construção da interface.
 
-| Cenário | Resultado |
-|:---|:---:|
-| Listar todos os filmes | ✅ 200 |
-| Buscar filme por ID | ✅ 200 |
-| Pesquisar por nome | ✅ 200 |
-| Buscar filme inexistente | ✅ 404 |
-| Informar ID inválido | ✅ 400 |
-| Pesquisar sem parâmetro | ✅ 400 |
+```mermaid
+flowchart LR
+    A["API REST"] --> B["Arquitetura MVC"]
+    B --> C["MySQL"]
+    C --> D["Interface Web"]
+    D --> E["Interações 3D"]
+```
 
-**Resultado: 6 cenários aprovados.**
+Ao longo desse processo, trabalhei com organização de código, integração entre sistemas, consultas ao banco de dados, desenvolvimento de interfaces e versionamento com Git.
 
----
+## Próximos passos
 
-## 🛡️ Boas práticas aplicadas
+Entre as melhorias planejadas estão:
 
-- Separação de responsabilidades com MVC.
-- Consultas SQL parametrizadas.
-- Utilização de variáveis de ambiente.
-- Pool de conexões com MySQL.
-- Tratamento de erros com `try/catch`.
-- Validação de parâmetros recebidos.
-- Versionamento do código com Git.
+- Publicação da aplicação online
+- Sistema de autenticação
+- Lista de filmes favoritos
+- Cadastro e gerenciamento de filmes pela interface
+- Testes automatizados da API
 
----
+## Desenvolvedor
 
-## 🗺️ Roadmap
+**Carlos Eduardo da Costa Freire**
 
-- [x] Configuração do Node.js e Express.
-- [x] Implementação da arquitetura MVC.
-- [x] Criação dos três endpoints.
-- [x] Integração com MySQL.
-- [x] Validação e tratamento de erros.
-- [x] Script SQL de configuração.
-- [ ] Testes automatizados.
-- [x] Interface web moderna e responsiva.
-- [x] Planeta 3D interativo com Three.js.
-- [x] Ampliação do catálogo (8 filmes).
-- [ ] Documentação final e apresentação.
+Estudante de Análise e Desenvolvimento de Sistemas na UniFECAF, com foco em desenvolvimento backend e interesse em Python, Node.js, APIs e bancos de dados.
+
+[![GitHub](https://img.shields.io/badge/GitHub-111827?style=for-the-badge&logo=github&logoColor=white)](https://github.com/eucarlosz)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carloseduardocostaf/)
 
 ---
-
-## 👨‍💻 Desenvolvedor
 
 <div align="center">
 
-### Carlos Eduardo da Costa Freire
+**UniFECAF Flix — Projeto acadêmico de Análise e Desenvolvimento de Sistemas**
 
-**Estudante de Análise e Desenvolvimento de Sistemas — UniFECAF**
-
-Foco em desenvolvimento Backend, APIs REST e bancos de dados.
-
-[![GitHub](https://img.shields.io/badge/GitHub-eucarlosz-181717?style=for-the-badge&logo=github)](https://github.com/eucarlosz)
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Carlos_Eduardo-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/carloseduardocostaf/)
-
----
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00BFFF,50:164D9A,100:080B18&height=120&section=footer" width="100%" alt="Rodapé decorativo"/>
-
-**UNIFECAF FLIX © 2026**
-
-*Desenvolvido para fins acadêmicos e evolução profissional.*
+Desenvolvido em 2026.
 
 </div>
