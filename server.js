@@ -4,20 +4,23 @@ const path = require("path");
 const filmeRoutes = require("./src/routes/filmeRoutes");
 
 const app = express();
-const PORT = 3000;
+
+// Porta definida automaticamente pela hospedagem
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// Site, CSS, JavaScript e imagens
+// Interface, CSS, JavaScript e imagens
 app.use(express.static(path.join(__dirname, "public")));
 
-// API de filmes
+// API REST de filmes
 app.use("/v1/controle-filmes", filmeRoutes);
 
-const servidor = app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+// Inicialização do servidor
+const servidor = app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Servidor iniciado na porta ${PORT}`);
 });
 
 servidor.on("error", (erro) => {
-  console.error("Erro no servidor:", erro);
+  console.error("Erro ao iniciar o servidor:", erro);
 });
