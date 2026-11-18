@@ -5,6 +5,8 @@
 
 ### Uma experiência cinematográfica desenvolvida para a web
 
+[🎬 Acessar demonstração online](https://eucarlosz.github.io/unifecaf-flix/)
+
 **Node.js · Express · MySQL · JavaScript · Three.js**
 
 [![Node.js](https://img.shields.io/badge/Node.js-111827?style=for-the-badge&logo=nodedotjs&logoColor=5FA04E)](https://nodejs.org/)
@@ -24,6 +26,16 @@ O **UniFECAF Flix** nasceu como um projeto acadêmico para desenvolver uma API R
 Durante o desenvolvimento, decidi ir além da proposta inicial e construir uma interface própria, inspirada na experiência das plataformas de streaming.
 
 O resultado é uma aplicação que combina backend em Node.js, persistência de dados com MySQL e um frontend com animações, efeitos de profundidade e elementos tridimensionais.
+
+## Demonstração online
+
+A interface está disponível gratuitamente pelo GitHub Pages:
+
+**[Acessar UniFECAF Flix](https://eucarlosz.github.io/unifecaf-flix/)**
+
+A demonstração permite explorar os oito filmes, pesquisar títulos e visualizar seus detalhes, mantendo as animações e os efeitos 3D.
+
+Para funcionar no GitHub Pages, essa versão utiliza um catálogo local em JavaScript. A API REST desenvolvida com Node.js, Express e MySQL permanece disponível no código-fonte para execução local.
 
 ## Experiência visual
 
@@ -165,10 +177,10 @@ node server.js
 Com o servidor iniciado, a interface e a API podem ser acessadas pelo navegador em:
 
 ```text
-aplicação em execução no navegador
+http://localhost:3000
 ```
 
-Esse endereço é local. A aplicação ainda não possui uma versão pública hospedada.
+A execução descrita acima utiliza o servidor Node.js e o banco MySQL localmente. A demonstração pública do frontend está disponível no GitHub Pages.
 
 ## Evolução do projeto
 
@@ -188,7 +200,7 @@ Ao longo desse processo, trabalhei com organização de código, integração en
 
 Entre as melhorias planejadas estão:
 
-- Publicação da aplicação online
+- Hospedagem pública da API REST e do banco de dados
 - Sistema de autenticação
 - Lista de filmes favoritos
 - Cadastro e gerenciamento de filmes pela interface
